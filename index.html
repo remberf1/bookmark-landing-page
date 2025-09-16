@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+
+  
+  <title>Frontend Mentor | Bookmark landing page</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+ <header>
+    <nav class="nav">
+      <img src="images/logo-bookmark.svg" alt="Bookmark Logo">
+      <img src="images/icon-hamburger.svg" alt="hamburger" >
+      <ul hidden>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#contact">Login</a></li>
+      </ul>
+    </nav>
+ </header>
+ <main>
+
+   <div class="container">
+     
+     <section class="hero">
+      <div class="hero__img--wrapper">
+        <img class="hero__img" src="images/illustration-hero.svg" alt="illustration-hero">
+      </div>
+
+       <div class="hero__text--wrapper">
+
+         <h1 class="hero__title"> A Simple Bookmark Manager</h1>
+         
+         <p class="hero__text">
+           A clean and simple interface to organize your favourite websites. Open a new 
+           browser tab and see your sites load instantly. Try it for free.
+          </p>
+          
+          <div class="btn--wrapper">
+
+            <button  class="btn btn--primary">
+              Get it on Chrome
+            </button>
+            <button class="btn btn--secondary">
+              Get it on Firefox
+            </button>
+          </div>
+        </div>
+    
+  </section>
+  
+  <section class="features" id="features">
+    
+    <div class="features__text--wrapper">
+      <h2 class="features__title">
+        Features
+      </h2>
+      <p class="features__text">
+        Our aim is to make it quick and easy for you to access your favourite websites. 
+        Your bookmarks sync between your devices so you can access them on the go.
+      </p>
+    </div>
+
+    <div class="tab--wrapper">
+      <div class="tab">
+        <button class="tablinks" onclick="openCity(event, 'tab1')">Simple Bookmarking</button>
+        <button class="tablinks" onclick="openCity(event, 'tab2')">Speedy Searching</button>
+        <button class="tablinks" onclick="openCity(event, 'tab3')">Easy Sharing</button>
+      </div>
+    </div>
+
+    <section class="feature__list">
+      
+    <img class="feature__list__img" src="images/illustration-features-tab-1.svg" alt="illustration-features-tab-1">
+    <div>
+      <h2>
+        Bookmark in one click
+      </h2>
+      <p>
+        Organize your bookmarks however you like. Our simple drag-and-drop interface 
+        gives you complete control over how you manage your favourite sites.
+      </p>
+    </div>
+    </section>
+    
+    <p hidden>
+      More Info
+      
+      Intelligent search
+      
+      Our powerful search feature will help you find saved sites in no time at all. 
+    No need to trawl through all of your bookmarks.
+    
+    More Info
+    
+    Share your bookmarks
+    
+    Easily share your bookmarks and collections with others. Create a shareable 
+    link that you can send at the click of a button.
+    
+    More Info
+  </p>
+  </section>
+  
+  <section class="download">
+    <h2>
+      Download the extension
+    </h2>
+    <p>
+      We’ve got more browsers in the pipeline. Please do let us know if you’ve 
+      got a favourite you’d like us to prioritize.
+    </p>
+  
+    <section class="card">
+      
+      <div class="card-item">
+        <img class="card-item__img" src="images/logo-chrome.svg" alt="logo-chrome">
+        <h3>Add to Chrome</h3>
+        <p>Minimum version 62</p>
+        <img src="images/bg-dots.svg" alt="Separator">
+        <button>
+          Add & Install Extension
+      </button>
+      
+    </div>
+    
+    <div class="card-item">
+        <img class="card-item__img" src="images/logo-chrome.svg" alt="logo-chrome">
+        <h3>
+
+          Add to Firefox
+        </h3>
+        <p>
+          Minimum version 55
+        </p>
+        <img src="images/bg-dots.svg" alt="Separator">
+        <button>
+          Add & Install Extension
+      </button>
+      
+    </div>
+    <div class="card-item">
+        <img class="card-item__img" src="images/logo-chrome.svg" alt="logo-chrome">
+        <h3>Add to Opera</h3>
+        <img src="images/bg-dots.svg" alt="Separator">
+        <p>Minimum version 46</p>
+        <button>
+          Add & Install Extension
+      </button>
+      
+    </div>
+  </section>
+  </section>
+  
+  <section class="faq">
+    
+    <h2>
+      Frequently Asked Questions
+    </h2>
+   <p>
+     Here are some of our FAQs. If you have any other questions you’d like 
+     answered please feel free to email us.
+   </p> 
+  
+  <section class="faq-list">
+
+    <details class="accordion-item">
+        <summary class="accordion-trigger" aria-expanded="false" aria-controls="faq3">
+
+          <span class="accordion-title">          
+            What is Bookmark?
+          </span>
+
+          <span class="accordion-icon" aria-hidden="true">
+            <img class="icon-open" src="images/icon-arrow.svg" alt="drop icon">
+            <img class="icon-close" src="images/icon-arrow.svg" alt="close icon">
+          </span>
+
+        </summary>
+        <div class="accordion-content" id="faq3">
+        <p>
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tincidunt 
+          justo eget ultricies fringilla. Phasellus blandit ipsum quis quam ornare mattis.
+        </p>
+        </div>
+
+      </details>
+
+      <details class="accordion-item">
+        <summary class="accordion-trigger" aria-expanded="false" aria-controls="faq3">
+
+          <span class="accordion-title">          
+            How can I request  a new browser?
+          </span>
+
+          <span class="accordion-icon" aria-hidden="true">
+            <img class="icon-open" src="images/icon-arrow.svg" alt="drop icon">
+            <img class="icon-close" src="images/icon-arrow.svg" alt="close icon">
+          </span>
+
+        </summary>
+        <div class="accordion-content" id="faq3">
+          <p>
+              Vivamus luctus eros aliquet convallis ultricies. Mauris augue massa, ultricies non ligula. 
+  Suspendisse imperdiet. Vivamus luctus eros aliquet convallis ultricies. Mauris augue massa, 
+  ultricies non ligula. Suspendisse imperdie tVivamus luctus eros aliquet convallis ultricies. 
+  Mauris augue massa, ultricies non ligula. Suspendisse imperdiet.
+</p>
+        </div>
+      </details>
+
+      <details class="accordion-item">
+        <summary class="accordion-trigger" aria-expanded="false" aria-controls="faq3">
+
+          <span class="accordion-title">          
+            Is there a mobile app?
+          </span>
+
+          <span class="accordion-icon" aria-hidden="true">
+            <img class="icon-open" src="images/icon-arrow.svg" alt="drop icon">
+            <img class="icon-close" src="images/icon-arrow.svg" alt="close icon">
+          </span>
+
+        </summary>
+        <div class="accordion-content" id="faq3">
+          <p>
+            Sed consectetur quam id neque fermentum accumsan. Praesent luctus vestibulum dolor, ut condimentum 
+        urna vulputate eget. Cras in ligula quis est pharetra mattis sit amet pharetra purus. Sed 
+        sollicitudin ex et ultricies bibendum.
+    </p>
+        </div>
+      </details>
+  
+  
+      <details class="accordion-item">
+        <summary class="accordion-trigger" aria-expanded="false" aria-controls="faq3">
+
+          <span class="accordion-title">          
+            What about other Chromium browsers?
+          </span>
+
+          <span class="accordion-icon" aria-hidden="true">
+            <img class="icon-open" src="images/icon-arrow.svg" alt="drop icon">
+            <img class="icon-close" src="images/icon-arrow.svg" alt="close icon">
+          </span>
+
+        </summary>
+        <div class="accordion-content" id="faq3">
+          <p>
+            Integer condimentum ipsum id imperdiet finibus. Vivamus in placerat mi, at euismod dui. Aliquam 
+  vitae neque eget nisl gravida pellentesque non ut velit.
+    </p>
+        </div>
+      </details>
+  
+      <button>
+        More Info
+      </button>
+</section>
+  
+  <p>
+    35,000+ already joined
+  </p>
+  
+  <h3>
+    Stay up-to-date with what we’re doing
+  </h3>
+  
+  <form>
+    <input type="email" placeholder="Enter your email address">
+    <button>
+      Contact Us
+    </button>
+  </form>
+</section>
+
+<footer>
+  Features
+  Pricing
+  Contact
+</footer>
+
+</div>
+<script src="index.js"></script>
+</main>
+</body>
+</html>

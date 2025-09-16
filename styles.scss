@@ -1,0 +1,312 @@
+// _scss
+$font-stack-default: "Rubik", "Josefin Sans", sans-serif;
+
+// Font weights
+$font-light: 400;
+$font-medium: 500;
+
+// Font sizes
+$font-default-size: 18px;
+
+// Colors
+$color-blue-600: hsl(231, 69%, 60%);
+$color-red-400: hsl(0, 94%, 66%);
+$color-grey-50: hsl(0, 0%, 97%);
+$color-blue-950: hsl(229, 31%, 21%);
+$color-grey-700:hsl(0, 0%, 40%);
+
+$font-scale: (
+  h1: 2rem,
+  h2: 3.05rem,
+  h3: 2.44rem,
+  h4: 1.953rem,
+  h5: 1.5625rem,
+  h6: 1.25rem,
+  p: 1rem
+);
+$font-line-height: 1.4;
+
+// Font mixin
+@mixin type-style($element, $family: $font-stack-default, $weight: 400) {
+  font-size: map-get($font-scale, $element);
+  font-family: $family;
+  font-weight: $weight;
+  line-height: $font-line-height;
+}
+
+
+@mixin fluid-type($min-size, $max-size, $min-vw: 320px, $max-vw: 1280px) {
+  font-size: clamp(#{$min-size}, calc(#{$min-size} + (#{strip-unit($max-size)} - #{strip-unit($min-size)}) * ((100vw - #{$min-vw}) / (#{strip-unit($max-vw)} - #{strip-unit($min-vw)}))), #{$max-size});
+}
+
+// styles.scss (main file)
+
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $font-stack-default;
+}
+
+*, *::after, *::before {
+  box-sizing: inherit;
+}
+
+p{
+    @include type-style(p, $font-stack-default,$font-medium);
+    color: $color-grey-700;
+}
+main {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 3em 1.25em;
+  align-items: center;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+}
+
+.nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+.hero{
+
+    margin-bottom: 3em;
+}
+.hero__img{
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    position: relative;
+}
+
+.hero__img--wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 3.5em;
+    left: 2em;
+    width: 96%;
+    height: 80%;
+    background-color: $color-blue-600;
+    border-bottom-left-radius: 100px;
+    border-top-left-radius: 100px; // Optional, adds symmetry
+    z-index: -1;
+    transform: translateX(5%); // More control than left: 60px
+    overflow: hidden;
+  }
+}
+
+.hero__title{
+    @include type-style(h1, $font-stack-default, $font-medium);
+    margin: 0.5em 0;
+    color: $color-blue-950;
+}
+.hero__text--wrapper{
+    margin-top: 3em;
+}
+.hero__text{
+    max-width: 30ch;
+}
+.btn--wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+    margin-top: 1em;
+}
+.btn{
+    border: none;
+    padding: 1em .7em;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%;
+}
+.btn--primary{
+    background-color: $color-blue-600;
+    color: white;
+}
+.btn--secondary{
+    background-color: $color-grey-50;
+    color: $color-grey-700;
+    font-weight: $font-medium;
+    font-weight: 700;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); //shadow for button at bottom
+}
+.features{
+    margin: 4em 0;
+}
+.features__text{
+    max-width: 40ch;
+    
+}
+.tab--wrapper {
+
+    min-height: 2px; // test: force height
+  display: flex;
+  justify-content: center;
+  border-bottom: 2px solid $color-grey-700;
+  width: fit-content; // or fixed width if needed
+  margin: 0 auto;
+  padding: 0 2rem; // Optional: controls how far line extends past text
+}
+
+.tab{
+    button{
+        border: none;
+        background: transparent;
+        font-size: 1rem;
+        font-weight: 500;
+        padding: 1em 0em;
+        cursor: pointer;
+        // border-top: 1px solid $color-grey-700;
+    }
+    button.active{
+        border-bottom: 2px solid $color-red-400;
+        padding-bottom: 0.5rem;
+    }
+    button:hover{
+        color: $color-red-400;
+    }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+     border-bottom: 2px solid $color-grey-700; // ✅ Apply border here
+}
+
+
+
+
+.feature__list__img{
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+}
+
+
+.card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.card-item{
+    background: rgb(255, 255, 255);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    min-height: 350px;
+    h3,p{
+        margin:  0;
+    }
+}
+
+.card-item__img{
+
+    margin: 0 auto;
+    height: auto;
+}
+summary {
+    list-style: none; 
+}
+summary::-webkit-details-marker {
+    display: none; 
+}
+.accordion-trigger{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid $color-grey-50;
+}
+.accordion-item[open] .accordion-trigger {
+  border-bottom: none;
+}
+.accordion-title{
+  color: $color-blue-950;
+  display: block;
+}
+.accordion-title:hover{
+  color: $color-red-400;
+  cursor: pointer;
+}
+.accordion-icon{
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.accordion-icon img {
+    display: none;
+}
+
+.accordion-item:not([open]) .icon-open {
+    display: inline-block;
+}
+
+.accordion-item[open] .icon-close {
+    display: inline-block;
+}
+
+
+.accordion-content{
+  color: $color-blue-600;
+  padding: 0rem 0 1rem 0rem;
+  border-bottom: 1px solid $color-grey-50;
+  line-height: 1.5;
+  max-width: 19.5rem;
+  p{
+    margin: 0;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .hero{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+  }
+    .card{
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+.feature__list{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    margin: 4rem 0;
+    padding: 0 1rem;
+    text-align: center;
+    background-color: aquamarine;
+}
+.tab--wrapper {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid $color-grey-50;
+  width: fit-content; // or fixed width if needed
+  margin: 0 auto;
+  padding: 0 2rem; // Optional: controls how far line extends past text
+}
+
+}
