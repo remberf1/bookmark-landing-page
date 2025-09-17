@@ -79,9 +79,129 @@ main {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
+    margin: 0 auto;
+    // max-width: 1200px;
+}
+.nav__menu{
+  display: none;
+}
+.nav button{
+    border: none;
+    background: none;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: transparent;
+    color: $color-grey-50;
+    font-weight: 700;
+}
+.sidebar{
+    height: 120vh;
+    width: 100%;
+    background-color: $color-blue-950;
+  opacity: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    pointer-events: none;
+    transform: translateY(-20px);
+    transition: all 0.3s ease-in-out , transform 0.3s ease-in-out;
+
+}
+.sidebar.active{
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+}
+.nav__close{
+    cursor: pointer;
+    display: none;
+}
+.nav__close.active{
+    display: block;
+}
+.sidebar__header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2em;
+  padding: 3em 2em;
+  
+}
+
+.sidebar__menu{
+  display: grid;
+  gap: 1em;
+  padding: 0 2em;
+  transition: all 0.3s ease-in-out;
+}
+.sidebar__menu li{
+  list-style: none;
+  position: relative;
+
+  &:first-child::before{
+    content: "";
+    position: absolute;
+    top: -1em;
+    display: block;
+    width: 100%;
+    height: 0.5px;
+    background-color: $color-grey-50;
+  }
+
+
+  &::after{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 0.5px;
+    margin-top: 0.5em;
+    background-color: $color-grey-50;
+  }
+
+}
+.sidebar__menu a {
+  text-decoration: none;
+  color: $color-grey-50;
+  font-weight: 300;
+  font-size: 1.25em;
+  text-transform: uppercase;
+  display: block;
+  text-align: center;
+  position: relative;
+  padding: 0.5em 0; // Added padding to create space around the text
+}
+
+.sidebar__menu{
+  button{
+    border: 3px solid $color-grey-50;
+    border-radius: 8px;
+    font-weight: bold;
+    letter-spacing: 0.15em;
+    background: none;
+    font-size: 1rem;
+    padding: 1em .7em;
+    font-size: 1.25em;
+    text-transform: uppercase;
+    cursor: pointer;
+    background-color: transparent;
+    color: $color-grey-50;
+    font-weight: 700;
+    width: 100%;
+    margin-top: 1em;
+  }
+}
+
+.sidebar__social{
+  position: relative;
+  top: 12em;
+  display: flex;
+  justify-content: center;
+  gap: 4em;
 }
 .hero{
-
     margin-bottom: 3em;
 }
 .hero__img{
@@ -102,7 +222,7 @@ main {
     position: absolute;
     top: 3.5em;
     left: 2em;
-    width: 96%;
+    width: 94%;
     height: 80%;
     background-color: $color-blue-600;
     border-bottom-left-radius: 100px;
@@ -114,7 +234,7 @@ main {
 }
 
 .hero__title{
-    @include type-style(h1, $font-stack-default, $font-medium);
+    @include fluid-type(h1, $font-stack-default, $font-medium);
     margin: 0.5em 0;
     color: $color-blue-950;
 }
@@ -158,40 +278,30 @@ main {
     
 }
 
-.tab-table {
-  border-collapse: collapse;
-  margin: 0 auto; /* center the table */
-  width: max-content;
-  margin-top: 3em;
-  margin-bottom: 2em;
+.tab-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+  margin: 3em auto 2em;
 }
 
-.tab-table td {
-  border-top: 1px solid #666666;  
-  border-bottom: 1px solid #666666; 
-  padding: 0 3em;
-}
-
-.tab-table tr:first-child td {
-  border-top: 1px solid #666666; 
-}
-
-.tab-table tr:last-child td {
-  border-bottom: 1px solid #666666; 
-}
-
-.tab-table button {
-  background: transparent;
+.tab-wrapper button[role="tab"] {
+  width: 100%;
+  padding: 1em 2em;
+  text-align: center;
   border: none;
+  background: transparent;
   font-size: 1rem;
   font-weight: 500;
-  padding: 1em 2em;
-  width: 100%;
   cursor: pointer;
+  border-top: 1px solid #666666;
+  border-bottom: 1px solid #666666;
+  color: inherit;
   position: relative;
 }
 
-.tab-table button.active::after {
+.tab-wrapper button.active::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -199,14 +309,13 @@ main {
   transform: translateX(-50%);
   width: 60%;
   height: 3px;
-  background-color: #e63946; /* red underline */
+  background-color: #e63946;
   border-radius: 1px;
 }
 
-.tab-table button:hover {
-  color: #e63946; /* red on hover */
+.tab-wrapper button:hover {
+  color: $color-red-400;
 }
-
 
 .feature__list{
   margin-top: 4em;
@@ -217,7 +326,6 @@ main {
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
-  // margin-bottom: 4em;
 
   &::before {
     content: "";
@@ -342,8 +450,13 @@ summary::-webkit-details-marker {
   cursor: pointer;
   transition: transform 0.3s ease;
 }
-.accordion-icon img {
+.accordion-icon img,
+.accordion-icon svg {
     display: none;
+}
+
+.icon-close{
+    transform: rotate(180deg);
 }
 
 .accordion-item:not([open]) .icon-open {
@@ -367,6 +480,60 @@ summary::-webkit-details-marker {
     margin-top: 2em;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+.contact__form__container {
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.contact__form__background {
+  width: 100%;
+  padding: 0.15em;
+  border-radius: 5px;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+
+  &.error {
+    background-color: $color-red-400; 
+    padding-bottom:0.5em ;
+  }
+}
+
+.contact__form--input {
+  width: 100%;
+  padding: 1em;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+}
+
+.contact__form--icon {
+  position: absolute;
+  right: 1em;
+  width: 20px;
+  height: 20px;
+  display: none;
+  top: 1em;
+
+  &.visible {
+    display: block;
+  }
+}
+
+.contact__form--error {
+  font-size: 0.75rem;
+  color: $color-grey-50;
+  margin: 0;
+  padding-top: 0.6em;
+  display: none;
+  text-align: left;
+
+  &.visible {
+    display: block;
+  }
+}
+
 .contact{
   background-color: $color-blue-600;
   color: $color-grey-50;
@@ -379,15 +546,19 @@ summary::-webkit-details-marker {
 }
 .contact__text{
   color: $color-grey-50;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
 }
 .accordion-content{
   color: $color-blue-600;
-  padding: 0rem 0 1rem 0rem;
+  padding: 0rem 0 0rem 0rem;
   border-bottom: 1px solid $color-grey-50;
-  line-height: 1.5;
-  max-width: 19.5rem;
-  p{
+  line-height: 2em;
+  max-width: 32.5ch;
+  text-align: left;
+    p{
     margin: 0;
+    padding: 1em
   }
 }
 .contact__title{
@@ -409,7 +580,7 @@ summary::-webkit-details-marker {
   }
   button{
     border: none;
-    padding: 1em .7em;
+    padding: .8em .7em; ;
     border-radius: 5px;
     font-size: 1rem;
     cursor: pointer;
@@ -430,19 +601,18 @@ summary::-webkit-details-marker {
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  padding: 2em 0 0 0;
+  gap: 1em;
   
    p{
     margin: 0;
     padding: 0.75em;
-    color: $color-grey-50;
+    color: $color-grey-700;
     text-transform: uppercase;
    }
 
 }
-.footer__logo{
-   filter: brightness(0) saturate(100%) invert(100%);
-}
+
 .footer__icons{
   display: flex;
   justify-content: center;
@@ -453,19 +623,91 @@ summary::-webkit-details-marker {
 @media screen and (min-width: 768px) {
 
   .nav{
-    padding: 1rem;
-
+    padding: 1rem 4rem;
+    max-width: 1200px;
+    align-items: center;
+  }
+  .nav__toggle{
+    display: none;
+  }
+  .nav__menu{
+    display: flex;
+    gap: 2em;
+    align-items: center;
+  }
+  .nav__menu li{
+    list-style: none;
+  }
+  .nav__menu a {
+    text-decoration: none;
+    color: $color-grey-700;
+    font-weight: 500;
+    font-size: 1rem;
+    text-transform: uppercase;
+    display: block;
+    position: relative;
+    padding: 0.5em 0; // Added padding to create space around the text
+  }
+  .nav__menu .btn--login{
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    letter-spacing: 0.15em;
+    background: $color-red-400;
+    font-size: 1rem;
+    padding: .5em 1em;
+    font-size: 1rem;
+    cursor: pointer;
+    color: $color-grey-50;
+    font-weight: 700;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
   .hero{
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
+    justify-content: space-between;
+    gap: 2em;
   }
     .card{
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
     }
+
+    .card-item:nth-child(2) {
+    margin-top: 2em;
+  }
+
+  .card-item:nth-child(3) {
+    margin-top: 4em;
+  }
+    .features__text{
+        text-align: center;
+        margin: 0 auto;
+        max-width: 45ch;
+    }
+.tab-wrapper{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border-bottom: 1px solid $color-grey-700;
+  width: fit-content; // or fixed width if needed
+  margin: 0 auto;
+  padding: 0 2rem; // Optional: controls how far line extends past text
+}
+   .tab-wrapper button[role="tab"] {
+  width: 100%;
+  padding: 1em 2em;
+  text-align: center;
+  border: none; // This removes all borders
+  background: transparent;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  color: inherit;
+  position: relative;
+}
 
 .feature__list{
     display: flex;
@@ -475,15 +717,68 @@ summary::-webkit-details-marker {
     margin: 4rem 0;
     padding: 0 1rem;
     text-align: center;
-    background-color: aquamarine;
 }
-.tab--wrapper {
-  display: flex;
-  justify-content: center;
-  border-bottom: 1px solid $color-grey-50;
-  width: fit-content; // or fixed width if needed
-  margin: 0 auto;
-  padding: 0 2rem; // Optional: controls how far line extends past text
+.feature__list__text--wrapper{
+    margin-top: 0;
+    text-align: left;
+    max-width: 30ch;
 }
 
+.download__text{
+    max-width: 50ch;
+    margin: 0 auto;
+}
+.contact{
+  margin: 0 auto;
+}
+ .contact__form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1em;
+    max-width: 400px;
+
+    button{
+      margin-top: 0;
+      
+    }
+  }
+  .contact__title{
+    font-size: 2em;
+    max-width: 20ch;
+  }
+
+  .contact__form__container {
+    flex: 0 0 70%;   // Fix container width to 70%
+    margin: 0;       // Remove any margin if needed
+    padding: 0;      // Remove padding if needed
+    display: flex;   // Make it flex if needed to contain the background and input nicely
+  }
+
+  .contact__form__background {
+    width: 100%;    // Fill the container fully
+    padding: 0;     // Reset padding if necessary
+  }
+
+  input {
+    width: 100%;    // Input fills the background wrapper
+  }
+
+  button {
+    flex: 0 0 30%;  // Fix button width to 30%
+    margin: 0;      // Reset margin if needed
+  }
+.footer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: .4em 4em;
+}
+.footer__about{
+  align-items: center;
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+}
 }
