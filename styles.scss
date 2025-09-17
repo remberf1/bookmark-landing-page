@@ -18,7 +18,7 @@ $color-grey-700:hsl(0, 0%, 40%);
 $font-scale: (
   h1: 2rem,
   h2: 3.05rem,
-  h3: 2.44rem,
+  h3: 1.5em,
   h4: 1.953rem,
   h5: 1.5625rem,
   h6: 1.25rem,
@@ -52,14 +52,16 @@ html, body {
   box-sizing: inherit;
 }
 
+
 p{
     @include type-style(p, $font-stack-default,$font-medium);
     color: $color-grey-700;
 }
 main {
   padding: 0;
-  margin: 0;
+  margin: 0 auto;
   width: 100%;
+  max-width: 1200px;
 }
 
 .container {
@@ -104,9 +106,9 @@ main {
     height: 80%;
     background-color: $color-blue-600;
     border-bottom-left-radius: 100px;
-    border-top-left-radius: 100px; // Optional, adds symmetry
+    border-top-left-radius: 100px; 
     z-index: -1;
-    transform: translateX(5%); // More control than left: 60px
+    transform: translateX(5%); 
     overflow: hidden;
   }
 }
@@ -139,7 +141,7 @@ main {
 }
 .btn--primary{
     background-color: $color-blue-600;
-    color: white;
+    color: $color-grey-50;
 }
 .btn--secondary{
     background-color: $color-grey-50;
@@ -149,62 +151,116 @@ main {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); //shadow for button at bottom
 }
 .features{
-    margin: 4em 0;
+    margin-top: 4em;
 }
 .features__text{
     max-width: 40ch;
     
 }
-.tab--wrapper {
 
-    min-height: 2px; // test: force height
-  display: flex;
-  justify-content: center;
-  border-bottom: 2px solid $color-grey-700;
-  width: fit-content; // or fixed width if needed
+.tab-table {
+  border-collapse: collapse;
+  margin: 0 auto; /* center the table */
+  width: max-content;
+  margin-top: 3em;
+  margin-bottom: 2em;
+}
+
+.tab-table td {
+  border-top: 1px solid #666666;  
+  border-bottom: 1px solid #666666; 
+  padding: 0 3em;
+}
+
+.tab-table tr:first-child td {
+  border-top: 1px solid #666666; 
+}
+
+.tab-table tr:last-child td {
+  border-bottom: 1px solid #666666; 
+}
+
+.tab-table button {
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 1em 2em;
+  width: 100%;
+  cursor: pointer;
+  position: relative;
+}
+
+.tab-table button.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 3px;
+  background-color: #e63946; /* red underline */
+  border-radius: 1px;
+}
+
+.tab-table button:hover {
+  color: #e63946; /* red on hover */
+}
+
+
+.feature__list{
+  margin-top: 4em;
+}
+
+.feature__list__img--wrapper{
+  position: relative;
+  width: 100%;
+  max-width: 600px;
   margin: 0 auto;
-  padding: 0 2rem; // Optional: controls how far line extends past text
+  // margin-bottom: 4em;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 2.2em;
+    right: 1.3em;
+    width: 96%;
+    height: 100%;
+    background-color: $color-blue-600;
+    border-bottom-right-radius: 100px;
+    border-top-right-radius: 100px; 
+    z-index: -1;
+    transform: translateX(-5%); 
+    overflow: hidden;
+  }
 }
+.feature__list__text--wrapper{
+    margin-top: 4.5em;
 
-.tab{
-    button{
-        border: none;
-        background: transparent;
-        font-size: 1rem;
-        font-weight: 500;
-        padding: 1em 0em;
-        cursor: pointer;
-        // border-top: 1px solid $color-grey-700;
+    h2{
+      margin: 0;
     }
-    button.active{
-        border-bottom: 2px solid $color-red-400;
-        padding-bottom: 0.5rem;
+    p{
+      margin: 0;
+      padding-top: 1em;
     }
-    button:hover{
-        color: $color-red-400;
-    }
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-     border-bottom: 2px solid $color-grey-700; // ✅ Apply border here
 }
-
-
-
 
 .feature__list__img{
     width: 100%;
     max-width: 400px;
     height: auto;
 }
-
+.feature__list__text{
+  line-height: 1.5;
+}
 
 .card{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 1rem;
+    // align-items: center;
+    gap: 2em;
+    margin-bottom: 2em;
 }
 
 .card-item{
@@ -213,14 +269,46 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    min-height: 350px;
+    justify-content: space-evenly;
+    padding: 1.4em;
+    box-shadow: 20px 10px 20px rgba(0,0,0,0.1);
+
+    min-height: 340px;
     h3,p{
-        margin:  0;
+        margin:  0.5em;
     }
 }
+.card-item__img{
+    position: relative;
+    top: 1em;
+    padding: 1em;
+}
 
+.card-item__text{
+    margin-top: 1em;
+}
+.card-item__btn{
+    border: none;
+    padding: 1em .7em;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%;
+    background-color: $color-blue-600;
+    color: $color-grey-50;
+    font-weight: 700;
+    margin-top: 0.5em;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+.download{
+  margin-top: 4em;
+}
+.download__text{
+  line-height: 1.5;
+}
+.faq{
+  margin-top: 3em;
+}
 .card-item__img{
 
     margin: 0 auto;
@@ -266,7 +354,32 @@ summary::-webkit-details-marker {
     display: inline-block;
 }
 
-
+.faq__list__btn{
+    border: none;
+    padding: 1em .7em;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 40%;
+    background-color: $color-blue-600;
+    color:$color-grey-50;
+    font-weight: 700;
+    margin-top: 2em;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.contact{
+  background-color: $color-blue-600;
+  color: $color-grey-50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2em;
+  margin-top: 4em;
+}
+.contact__text{
+  color: $color-grey-50;
+}
 .accordion-content{
   color: $color-blue-600;
   padding: 0rem 0 1rem 0rem;
@@ -277,8 +390,72 @@ summary::-webkit-details-marker {
     margin: 0;
   }
 }
+.contact__title{
+  @include type-style(h3, $font-stack-default, $font-medium);
+  margin: 0.5em 0;
+}
+.contact__form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+  margin-top: 2em;
+  width: 100%;
+  input{
+    width: 100%;
+    padding: 1em;
+    border-radius: 5px;
+    border: none;
+  }
+  button{
+    border: none;
+    padding: 1em .7em;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%;
+    background-color: $color-red-400;
+    color: $color-grey-50;
+    font-weight: 700;
+    margin-top: 0.5em;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  }
+}
+.footer{
+  background-color: $color-blue-950;
+  color: $color-grey-50;
+  text-align: center;
+}
+.footer__about{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
+  
+   p{
+    margin: 0;
+    padding: 0.75em;
+    color: $color-grey-50;
+    text-transform: uppercase;
+   }
+
+}
+.footer__logo{
+   filter: brightness(0) saturate(100%) invert(100%);
+}
+.footer__icons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+  padding: 1em 0;
+}
 @media screen and (min-width: 768px) {
+
+  .nav{
+    padding: 1rem;
+
+  }
   .hero{
     display: flex;
     flex-direction: row-reverse;

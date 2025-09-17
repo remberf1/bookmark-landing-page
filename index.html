@@ -14,17 +14,16 @@
   <title>Frontend Mentor | Bookmark landing page</title>
 
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
+  
 </head>
 <body>
  <header>
     <nav class="nav">
       <img src="images/logo-bookmark.svg" alt="Bookmark Logo">
-      <img src="images/icon-hamburger.svg" alt="hamburger" >
-      <ul hidden>
+      <button class="nav__toggle" aria-label="Toggle Menu">
+       <img src="images/icon-hamburger.svg" alt="">
+      </button>
+      <ul class="nav__menu" hidden>
         <li><a href="#features">Features</a></li>
         <li><a href="#pricing">Pricing</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -33,8 +32,9 @@
     </nav>
  </header>
  <main>
-
    <div class="container">
+
+   
      
      <section class="hero">
       <div class="hero__img--wrapper">
@@ -75,22 +75,28 @@
       </p>
     </div>
 
-    <div class="tab--wrapper">
-      <div class="tab">
-        <button class="tablinks" onclick="openCity(event, 'tab1')">Simple Bookmarking</button>
-        <button class="tablinks" onclick="openCity(event, 'tab2')">Speedy Searching</button>
-        <button class="tablinks" onclick="openCity(event, 'tab3')">Easy Sharing</button>
-      </div>
-    </div>
+    <table class="tab-table">
+  <tr>
+    <td><button class="tablinks active" onclick="openCity(event, 'tab1')">Simple Bookmarking</button></td>
+  </tr>
+  <tr>
+    <td><button class="tablinks" onclick="openCity(event, 'tab2')">Speedy Searching</button></td>
+  </tr>
+  <tr>
+    <td><button class="tablinks" onclick="openCity(event, 'tab3')">Easy Sharing</button></td>
+  </tr>
+</table>
 
     <section class="feature__list">
-      
-    <img class="feature__list__img" src="images/illustration-features-tab-1.svg" alt="illustration-features-tab-1">
-    <div>
-      <h2>
+      <div class="feature__list__img--wrapper">
+        
+        <img class="feature__list__img" src="images/illustration-features-tab-1.svg" alt="illustration-features-tab-1">
+      </div>
+    <div class="feature__list__text--wrapper">
+      <h2 class="feature__list__title">
         Bookmark in one click
       </h2>
-      <p>
+      <p class="feature__list__text">
         Organize your bookmarks however you like. Our simple drag-and-drop interface 
         gives you complete control over how you manage your favourite sites.
       </p>
@@ -117,10 +123,10 @@
   </section>
   
   <section class="download">
-    <h2>
+    <h2 class="download__title">
       Download the extension
     </h2>
-    <p>
+    <p class="download__text">
       We’ve got more browsers in the pipeline. Please do let us know if you’ve 
       got a favourite you’d like us to prioritize.
     </p>
@@ -128,11 +134,15 @@
     <section class="card">
       
       <div class="card-item">
-        <img class="card-item__img" src="images/logo-chrome.svg" alt="logo-chrome">
-        <h3>Add to Chrome</h3>
-        <p>Minimum version 62</p>
+        <div>
+          <img class="card-item__img" src="images/logo-chrome.svg" alt="logo-chrome">
+        </div>
+        <div class="card-item__text">
+          <h3>Add to Chrome</h3>
+          <p>Minimum version 62</p>
+        </div>
         <img src="images/bg-dots.svg" alt="Separator">
-        <button>
+        <button class="card-item__btn">
           Add & Install Extension
       </button>
       
@@ -140,25 +150,29 @@
     
     <div class="card-item">
         <img class="card-item__img" src="images/logo-chrome.svg" alt="logo-chrome">
-        <h3>
-
-          Add to Firefox
-        </h3>
-        <p>
-          Minimum version 55
-        </p>
+        
+        <div class="card-item__text">
+          <h3>
+            Add to Firefox
+          </h3>
+          <p>
+            Minimum version 55
+          </p>
+        </div>
         <img src="images/bg-dots.svg" alt="Separator">
-        <button>
+        <button class="card-item__btn">
           Add & Install Extension
       </button>
       
     </div>
     <div class="card-item">
         <img class="card-item__img" src="images/logo-chrome.svg" alt="logo-chrome">
-        <h3>Add to Opera</h3>
-        <img src="images/bg-dots.svg" alt="Separator">
-        <p>Minimum version 46</p>
-        <button>
+       <div class="card-item__text">
+         <h3>Add to Opera</h3>
+         <img src="images/bg-dots.svg" alt="Separator">
+         <p>Minimum version 46</p>
+        </div>
+        <button class="card-item__btn">
           Add & Install Extension
       </button>
       
@@ -176,7 +190,7 @@
      answered please feel free to email us.
    </p> 
   
-  <section class="faq-list">
+  <section class="faq__list">
 
     <details class="accordion-item">
         <summary class="accordion-trigger" aria-expanded="false" aria-controls="faq3">
@@ -267,35 +281,46 @@
         </div>
       </details>
   
-      <button>
+      <button class="faq__list__btn">
         More Info
       </button>
-</section>
+    </section>
+  </div>
   
-  <p>
+</main>
+  <section class="contact" id="contact">
+
+  <p class="contact__text">
     35,000+ already joined
   </p>
   
-  <h3>
+  <h3 class="contact__title">
     Stay up-to-date with what we’re doing
   </h3>
   
-  <form>
+  <form class="contact__form">
     <input type="email" placeholder="Enter your email address">
     <button>
       Contact Us
     </button>
   </form>
 </section>
+</section>
 
-<footer>
-  Features
-  Pricing
-  Contact
+<footer class="footer">
+  <div class="footer__about">
+
+    <img class="footer__logo" src="images/logo-bookmark.svg" alt="logo-bookmark-footer">
+    <p>Features</p>
+    <p>Pricing</p>
+    <p>Contact</p>
+  </div>
+  <div class="footer__icons">
+    <img src="images/icon-facebook.svg" alt="icon-facebook">
+    <img src="images/icon-twitter.svg" alt="icon-twitter">
+  </div>
 </footer>
 
-</div>
 <script src="index.js"></script>
-</main>
 </body>
 </html>
