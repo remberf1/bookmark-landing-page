@@ -61,7 +61,7 @@ main {
   padding: 0;
   margin: 0 auto;
   width: 100%;
-  max-width: 1200px;
+  // max-width: 1200px;
 }
 
 .container {
@@ -80,7 +80,7 @@ main {
     align-items: center;
     padding: 1rem 2rem;
     margin: 0 auto;
-    // max-width: 1200px;
+    max-width: 1200px;
 }
 .nav__menu{
   display: none;
@@ -181,7 +181,6 @@ main {
     font-weight: bold;
     letter-spacing: 0.15em;
     background: none;
-    font-size: 1rem;
     padding: 1em .7em;
     font-size: 1.25em;
     text-transform: uppercase;
@@ -266,9 +265,18 @@ main {
 .btn--secondary{
     background-color: $color-grey-50;
     color: $color-grey-700;
-    font-weight: $font-medium;
     font-weight: 700;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); //shadow for button at bottom
+}
+.btn--primary:hover{
+    background-color: white;
+    color: $color-blue-600;//ew
+    border: 1px solid $color-blue-600;
+}
+.btn--secondary:hover{
+    background-color: white;
+    color: $color-grey-700;
+    border: 1px solid $color-grey-700;
 }
 .features{
     margin-top: 4em;
@@ -313,8 +321,8 @@ main {
   border-radius: 1px;
 }
 
-.tab-wrapper button:hover {
-  color: $color-red-400;
+.tab-wrapper button[role="tab"]:hover {
+  color: $color-red-400 ;
 }
 
 .feature__list{
@@ -408,6 +416,11 @@ main {
     margin-top: 0.5em;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
 }
+.card-item__btn:hover{
+    background-color: white;
+    color: $color-blue-600;
+    border: 1px solid $color-blue-600;
+}
 .download{
   margin-top: 4em;
 }
@@ -433,11 +446,11 @@ summary::-webkit-details-marker {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 0;
-  border-bottom: 1px solid $color-grey-50;
 }
 .accordion-item[open] .accordion-trigger {
   border-bottom: none;
 }
+
 .accordion-title{
   color: $color-blue-950;
   display: block;
@@ -448,6 +461,7 @@ summary::-webkit-details-marker {
 }
 .accordion-icon{
   cursor: pointer;
+  margin-right: 1em;
   transition: transform 0.3s ease;
 }
 .accordion-icon img,
@@ -552,7 +566,6 @@ summary::-webkit-details-marker {
 .accordion-content{
   color: $color-blue-600;
   padding: 0rem 0 0rem 0rem;
-  border-bottom: 1px solid $color-grey-50;
   line-height: 2em;
   max-width: 32.5ch;
   text-align: left;
@@ -623,7 +636,7 @@ summary::-webkit-details-marker {
 @media screen and (min-width: 768px) {
 
   .nav{
-    padding: 1rem 4rem;
+    padding: 1em 3em;
     max-width: 1200px;
     align-items: center;
   }
@@ -648,9 +661,12 @@ summary::-webkit-details-marker {
     position: relative;
     padding: 0.5em 0; // Added padding to create space around the text
   }
+  .nav__menu a:hover{
+    color: $color-red-400;
+  }
   .nav__menu .btn--login{
     border: none;
-    border-radius: 8px;
+    border-radius: 5px;
     font-weight: bold;
     letter-spacing: 0.15em;
     background: $color-red-400;
@@ -662,12 +678,43 @@ summary::-webkit-details-marker {
     font-weight: 700;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
+  .nav__menu .btn--login:hover{
+    background-color: $color-grey-50;
+    color: $color-red-400;
+    border: 1px solid $color-red-400;
+  }
   .hero{
     display: flex;
     flex-direction: row-reverse;
-    align-items: center;
+    // align-items: center;
     justify-content: space-between;
-    gap: 2em;
+    gap: 2.5em;
+  }
+  .hero__text--wrapper{
+    text-align: left;
+  }
+  .hero__img--wrapper{
+    transform: translateX(7em);
+  }
+  .hero__img--wrapper::before {
+    height: 90%;
+    transform: translateX(6em);
+  }
+  .hero__title{
+    max-width: 20ch;
+  }
+  .hero__text{
+    max-width: 45ch;
+    line-height: 1.5;
+  }
+  .btn--wrapper{
+    justify-content: flex-start;
+    gap: 1em;
+    margin-top: 2em;
+  }
+  
+  .btn{
+    padding: 0.75em 0.3em;
   }
     .card{
         flex-direction: row;
@@ -683,6 +730,7 @@ summary::-webkit-details-marker {
     margin-top: 4em;
   }
     .features__text{
+      line-height: 1.5;
         text-align: center;
         margin: 0 auto;
         max-width: 45ch;
@@ -693,10 +741,25 @@ summary::-webkit-details-marker {
   justify-content: center;
   border-bottom: 1px solid $color-grey-700;
   width: fit-content; // or fixed width if needed
-  margin: 0 auto;
-  padding: 0 2rem; // Optional: controls how far line extends past text
+  margin: 2em auto;
+  padding: 0 0rem; // Optional: controls how far line extends past text
 }
+.tab-wrapper button.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 95%;
+  height: 3px;
+  background-color: #e63946;
+  border-radius: 1px;
+}
+
+
    .tab-wrapper button[role="tab"] {
+     white-space: nowrap; // 💥 prevents wrapping
+    width: auto; 
   width: 100%;
   padding: 1em 2em;
   text-align: center;
@@ -707,16 +770,25 @@ summary::-webkit-details-marker {
   cursor: pointer;
   color: inherit;
   position: relative;
-}
 
+  
+}
 .feature__list{
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 2rem;
+    justify-content: space-between;
+    gap: 6em;
     margin: 4rem 0;
     padding: 0 1rem;
     text-align: center;
+}
+.feature__list__img--wrapper{
+  
+  // transform: translateX(-1em);
+  &::before {
+    width: 190%;
+  }
 }
 .feature__list__text--wrapper{
     margin-top: 0;
@@ -727,6 +799,39 @@ summary::-webkit-details-marker {
 .download__text{
     max-width: 50ch;
     margin: 0 auto;
+}
+.card{
+  margin-top: 2em;
+}
+.card-item__btn{
+  max-height: fit-content;
+}
+.faq__text{
+  max-width: 45ch;
+  margin: 0 auto;
+  margin-bottom:2em ;
+}
+.accordion-trigger{
+  border: none;
+}
+.accordion-trigger:nth-child(1){
+  border-top: 1px solid $color-grey-700;
+}
+.accordion-item:last-of-type .accordion-trigger {
+  border-bottom: 1px solid $color-grey-700; 
+}
+.accordion-content{
+  max-width: 60ch;
+  margin-top:1em ;
+  margin-bottom: 2em;
+  p{
+    line-height: 2;
+    padding: 0;
+  }
+}
+
+.faq__list__btn{
+  max-width:  30%;
 }
 .contact{
   margin: 0 auto;
@@ -772,7 +877,8 @@ summary::-webkit-details-marker {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: .4em 4em;
+  padding: .2em 4em;
+  font-size: $font-default-size
 }
 .footer__about{
   align-items: center;
@@ -780,5 +886,16 @@ summary::-webkit-details-marker {
   display: flex;
   flex-direction: row;
   gap: 1em;
+  padding: 0 1em;
 }
+.footer__about p:hover{
+    color: $color-red-400;
+    cursor: pointer;
+}
+
+.footer__icons svg:hover path {
+  fill: $color-red-400;
+  cursor: pointer;
+}
+
 }

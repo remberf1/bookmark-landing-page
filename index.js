@@ -9,29 +9,25 @@ const errorIcon = document.querySelector('.contact__form--icon');
 const errorText = document.querySelector('.contact__form--error');
 const background = document.querySelector('.contact__form__background');
 const form = document.querySelector('.contact__form');
+
 tabs.forEach(tab => {
   tab.addEventListener('click', () => {
-    const targetId = tab.getAttribute('aria-controls');
-    
-    // Deactivate all tabs
+    // Remove active state from all tabs and hide all tab panels
     tabs.forEach(t => {
       t.classList.remove('active');
       t.setAttribute('aria-selected', 'false');
     });
+    tabPanels.forEach(panel => panel.hidden = true);
 
-    // Hide all tab panels
-    tabPanels.forEach(panel => {
-      panel.hidden = true;
-    });
-
-    // Activate clicked tab
+    // Add active state to clicked tab and show corresponding panel
     tab.classList.add('active');
     tab.setAttribute('aria-selected', 'true');
-
-    // Show corresponding tab panel
-    document.getElementById(targetId).hidden = false;
+    const tabPanelId = tab.getAttribute('aria-controls');
+    document.getElementById(tabPanelId).hidden = false;
   });
 });
+
+   
 
 // Sidebar toggle
 navToggle.addEventListener('click', () => {
