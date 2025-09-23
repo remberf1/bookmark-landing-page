@@ -820,7 +820,7 @@ summary::-webkit-details-marker {
   margin-top: 2em;
 }
 .card-item__btn {
-  max-height: min-content; /* or just remove this rule */
+  max-height: 50px; /* or just remove this rule */
   // height: auto;
   // padding: 10px 20px; /* control size with padding */
   // line-height: 1.2;
