@@ -422,7 +422,7 @@ main {
     background-color: $color-blue-600;
     color: $color-grey-50;
     font-weight: 700;
-    margin-top: 0.5em;
+    margin-top: 1em;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
 }
 .card-item__btn:hover{
@@ -819,8 +819,12 @@ summary::-webkit-details-marker {
 .card{
   margin-top: 2em;
 }
-.card-item__btn{
-  max-height: fit-content;
+.card-item__btn {
+  max-height: min-content; /* or just remove this rule */
+  height: auto;
+  padding: 10px 20px; /* control size with padding */
+  line-height: 1.2;
+  box-sizing: border-box;
 }
 .faq__text{
   max-width: 45ch;
