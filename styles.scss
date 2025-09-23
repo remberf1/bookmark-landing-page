@@ -821,9 +821,9 @@ summary::-webkit-details-marker {
 }
 .card-item__btn {
   max-height: min-content; /* or just remove this rule */
-  height: auto;
-  padding: 10px 20px; /* control size with padding */
-  line-height: 1.2;
+  // height: auto;
+  // padding: 10px 20px; /* control size with padding */
+  // line-height: 1.2;
   box-sizing: border-box;
 }
 .faq__text{
