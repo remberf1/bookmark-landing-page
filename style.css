@@ -3,6 +3,7 @@ html, body {
   padding: 0;
   box-sizing: border-box;
   font-family: "Rubik", "Josefin Sans", sans-serif;
+  overflow-x: hidden;
 }
 
 *, *::after, *::before {
@@ -274,12 +275,15 @@ main {
   font-weight: 500;
   cursor: pointer;
   border-top: 1px solid #666666;
-  border-bottom: 1px solid #666666;
   color: inherit;
   position: relative;
 }
 
-.tab-wrapper button.active::after {
+.tab-wrapper button[role=tab]:last-child {
+  border-bottom: 1px solid #666666;
+}
+
+.tab-wrapper button.is-active::after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -296,7 +300,12 @@ main {
 }
 
 .feature__list {
+  display: none;
   margin-top: 4em;
+}
+
+.feature__list.is-active {
+  display: block;
 }
 
 .feature__list__img--wrapper {
@@ -612,6 +621,10 @@ summary::-webkit-details-marker {
   text-transform: uppercase;
 }
 
+.is-hidden {
+  display: none !important;
+}
+
 .footer__icons {
   display: flex;
   justify-content: center;
@@ -726,7 +739,7 @@ summary::-webkit-details-marker {
     margin: 2em auto;
     padding: 0 0rem;
   }
-  .tab-wrapper button.active::after {
+  .tab-wrapper button.is-active::after {
     content: "";
     position: absolute;
     bottom: 0;
@@ -752,7 +765,7 @@ summary::-webkit-details-marker {
     position: relative;
   }
   .feature__list {
-    display: flex;
+    display: none;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
@@ -760,6 +773,9 @@ summary::-webkit-details-marker {
     margin: 4rem 0;
     padding: 0 1rem;
     text-align: center;
+  }
+  .feature__list.is-active {
+    display: flex;
   }
   .feature__list__img--wrapper::before {
     width: 190%;

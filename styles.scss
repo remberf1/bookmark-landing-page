@@ -46,6 +46,7 @@ html, body {
   padding: 0;
   box-sizing: border-box;
   font-family: $font-stack-default;
+   overflow-x: hidden;
 }
 
 *, *::after, *::before {
@@ -304,12 +305,15 @@ main {
   font-weight: 500;
   cursor: pointer;
   border-top: 1px solid #666666;
-  border-bottom: 1px solid #666666;
+  // border-bottom: 1px solid #666666;
   color: inherit;
   position: relative;
 }
+.tab-wrapper button[role="tab"]:last-child {
+  border-bottom: 1px solid #666666;
+}
 
-.tab-wrapper button.active::after {
+.tab-wrapper button.is-active::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -326,7 +330,12 @@ main {
 }
 
 .feature__list{
+  display: none;
   margin-top: 4em;
+}
+
+.feature__list.is-active{
+  display: block;
 }
 
 .feature__list__img--wrapper{
@@ -623,7 +632,10 @@ summary::-webkit-details-marker {
     color: $color-grey-700;
     text-transform: uppercase;
    }
+}
 
+.is-hidden {
+  display: none !important;
 }
 
 .footer__icons{
@@ -633,6 +645,7 @@ summary::-webkit-details-marker {
   gap: 2em;
   padding: 1em 0;
 }
+
 @media screen and (min-width: 768px) {
 
   .nav{
@@ -744,7 +757,7 @@ summary::-webkit-details-marker {
   margin: 2em auto;
   padding: 0 0rem; // Optional: controls how far line extends past text
 }
-.tab-wrapper button.active::after {
+.tab-wrapper button.is-active::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -774,7 +787,7 @@ summary::-webkit-details-marker {
   
 }
 .feature__list{
-    display: flex;
+    display: none;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
@@ -782,6 +795,9 @@ summary::-webkit-details-marker {
     margin: 4rem 0;
     padding: 0 1rem;
     text-align: center;
+}
+.feature__list.is-active {
+  display: flex; 
 }
 .feature__list__img--wrapper{
   

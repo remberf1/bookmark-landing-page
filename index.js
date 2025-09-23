@@ -12,22 +12,17 @@ const form = document.querySelector('.contact__form');
 
 tabs.forEach(tab => {
   tab.addEventListener('click', () => {
-    // Remove active state from all tabs and hide all tab panels
-    tabs.forEach(t => {
-      t.classList.remove('active');
-      t.setAttribute('aria-selected', 'false');
-    });
-    tabPanels.forEach(panel => panel.hidden = true);
+    const tabId = tab.getAttribute('data-tab');
 
-    // Add active state to clicked tab and show corresponding panel
-    tab.classList.add('active');
-    tab.setAttribute('aria-selected', 'true');
-    const tabPanelId = tab.getAttribute('aria-controls');
-    document.getElementById(tabPanelId).hidden = false;
+    // Remove active class from all tabs and panels
+    tabs.forEach(t => t.classList.remove('is-active'));
+    tabPanels.forEach(panel => panel.classList.remove('is-active'));
+
+    // Add active class to clicked tab and matching panel
+    tab.classList.add('is-active');
+    document.getElementById(tabId).classList.add('is-active');
   });
 });
-
-   
 
 // Sidebar toggle
 navToggle.addEventListener('click', () => {
