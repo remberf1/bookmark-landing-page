@@ -316,7 +316,7 @@ main {
 .tab-wrapper button.is-active::after {
   content: '';
   position: absolute;
-  bottom: 0;
+  bottom: -1px;
   left: 50%;
   transform: translateX(-50%);
   width: 60%;
@@ -502,6 +502,20 @@ summary::-webkit-details-marker {
     font-weight: 700;
     margin-top: 2em;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.feature__list__btn{
+  display: none;
+  border: none;
+    padding: 1em .7em;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 30%;
+    background-color: $color-blue-600;
+    color:$color-grey-50;
+    font-weight: 700;
+    margin-top: 2em;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1)
 }
 .contact__form__container {
   width: 100%;
@@ -760,7 +774,7 @@ summary::-webkit-details-marker {
 .tab-wrapper button.is-active::after {
   content: '';
   position: absolute;
-  bottom: 0;
+  bottom: -1px;
   left: 50%;
   transform: translateX(-50%);
   width: 95%;
@@ -771,20 +785,21 @@ summary::-webkit-details-marker {
 
 
    .tab-wrapper button[role="tab"] {
-     white-space: nowrap; // 💥 prevents wrapping
+     white-space: nowrap;
     width: auto; 
   width: 100%;
   padding: 1em 2em;
   text-align: center;
-  border: none; // This removes all borders
+  border: none; 
   background: transparent;
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
   color: inherit;
   position: relative;
-
-  
+}
+.tab-wrapper button[role="tab"]:last-child {
+  border-bottom:none;
 }
 .feature__list{
     display: none;
@@ -796,20 +811,24 @@ summary::-webkit-details-marker {
     padding: 0 1rem;
     text-align: center;
 }
+.feature__list__btn{
+  display: block;
+}
 .feature__list.is-active {
   display: flex; 
 }
 .feature__list__img--wrapper{
-  
-  // transform: translateX(-1em);
   &::before {
     width: 190%;
   }
 }
+.feature__list__text{
+  max-width: 74ch;
+}
 .feature__list__text--wrapper{
     margin-top: 0;
     text-align: left;
-    max-width: 30ch;
+    max-width: 50ch;
 }
 
 .download__text{
@@ -820,10 +839,7 @@ summary::-webkit-details-marker {
   margin-top: 2em;
 }
 .card-item__btn {
-  max-height: 50px; /* or just remove this rule */
-  // height: auto;
-  // padding: 10px 20px; /* control size with padding */
-  // line-height: 1.2;
+  max-height: 50px; 
   box-sizing: border-box;
 }
 .faq__text{
